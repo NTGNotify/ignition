@@ -3,7 +3,7 @@
 ## Prepare Cloud Foundry
 
 1. Install the [`Pivotal Application Service`](https://network.pivotal.io/products/elastic-runtime) (PAS) tile
-1. Install the [`Pivotal Single Sign-On for PCF`](https://network.pivotal.io/products/pivotal_single_sign-on_service) tile
+2. Install the [`Pivotal Single Sign-On for PCF`](https://network.pivotal.io/products/pivotal_single_sign-on_service) tile
 
 ## Create A p-identity Plan That Authenticates and Authorizes Your Users
 
@@ -13,11 +13,11 @@
 
 1. Create an `ignition` org: `cf create-org ignition`
   * Grant access to the ignition org to yourself: `cf set-org-role you@example.net ignition OrgManager`
-1. Create a `production` space in the ignition org: `cf create-space production -o ignition`
+2. Create a `production` space in the ignition org: `cf create-space production -o ignition`
   * Grant Space Manager access to the production space to yourself: `cf set-space-role you@example.net ignition production SpaceManager`
   * Grant Space Developer access to the production space to yourself: `cf set-space-role you@example.net ignition production SpaceDeveloper`
   * Grant Space Auditor access to the production space to yourself: `cf set-space-role you@example.net ignition production SpaceAuditor`
-1. Create an `ignition` quota: `cf create-quota ignition -m 10G -i -1 -r 1000 -s 100 --allow-paid-service-plans -a -1 --reserved-route-ports 1`
+3. Create an `ignition` quota: `cf create-quota ignition -m 10G -i -1 -r 1000 -s 100 --allow-paid-service-plans -a -1 --reserved-route-ports 1`
 
 ## Create The `ignition-config` User Provided Service Instance
 
@@ -60,7 +60,7 @@ Here's a reference of the available values:
 * `space_name`:
 * `quota_name`:
 * `iso_segment_name`:
-
+---
 * `uaa create-client ignition -s <client-secret> --authorized_grant_types client_credentials --scope cloud_controller.admin,scim.write,scim.read --authorities cloud_controller.admin,scim.write,scim.read`
 
 ```yml
